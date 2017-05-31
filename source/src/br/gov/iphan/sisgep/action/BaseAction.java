@@ -25,20 +25,21 @@ import org.jboss.seam.international.StatusMessage.Severity;
 import br.gov.iphan.sisgep.entity.FimDependente;
 
 /**
- * Classe Abstrata responsável por conceder funções basicas para todas Action   
+ * Classe Abstrata responsável por conceder funções basicas para todas Action
  * da Aplicação.
- * 
+ *
  * @author 	Thiago Nunes Vieira
  **/
 public abstract class BaseAction implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	public static String CONTENT_TYPE_PDF = "application/pdf";
-	
+
+	// Incluir
 	@In(create = true, required = false)
 	@Out(required = false)
 	public Boolean isIncluir;
-	
+
 	@In(create = true, required = false)
 	@Out(required = false)
 	ControllerHelper controllerHelper;
@@ -50,7 +51,7 @@ public abstract class BaseAction implements Serializable {
 	@In(create = true, required = false)
 	@Out(required = false)
 	public Boolean isVisualizar;
-	
+
 	@In(create = true, required = false)
 	@Out(required = false)
 	public Boolean reRenderModal;
@@ -59,9 +60,9 @@ public abstract class BaseAction implements Serializable {
 	@Begin(flushMode = FlushModeType.MANUAL, join = true)
 	public void init() {
 	}
-	
+
 	public String link = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath()+"/help/start.html";
-	
+
 	@In
 	public FacesMessages facesMessages;
 
@@ -188,7 +189,7 @@ public abstract class BaseAction implements Serializable {
 	}
 
 	/**
-	 * Metodo responsável por realizar a copia dos atributos de um objeto para outro object 
+	 * Metodo responsável por realizar a copia dos atributos de um objeto para outro object
 	 * sem manter o vinculos entre os dois.
 	 * @param destino 	  Object que rebecerá os valores dos atributos copiados.
 	 * @param origem      Object o qual os atributos será copiado os valores dos atributos.
@@ -212,10 +213,10 @@ public abstract class BaseAction implements Serializable {
 	 * @author            Thiago Nunes Vieira
 	 **/
 	public String formataData(Date date, String mask) {
-		DateFormat df = new SimpleDateFormat (mask);  
+		DateFormat df = new SimpleDateFormat (mask);
 		return df.format(date);
 	}
-	
+
 	/**
 	 * Metodo responsável por converter um List em uma String.
 	 * @param list 	  	  list usa para obter a valor que será convertida.
@@ -234,7 +235,7 @@ public abstract class BaseAction implements Serializable {
 		}
 		return "-";
 	}
-	
+
 	public FacesMessages getFacesMessages() {
 		return facesMessages;
 	}
@@ -245,5 +246,5 @@ public abstract class BaseAction implements Serializable {
 
 	public String getLink() {
 		return link;
-	}	
+	}
 }
